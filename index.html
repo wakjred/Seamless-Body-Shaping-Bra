@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Body Shaping Bra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #fb5432; --bg: #000000; --card: #121212; --text: #ffffff; --text-muted: #999; --border: #222; }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 80px; }
+        .container { max-width: 500px; margin: 0 auto; background: var(--bg); min-height: 100vh; position: relative; }
+        
+        .product-swiper { width: 100%; aspect-ratio: 1/1; background: #000; position: relative; }
+        .swiper-pagination-bullet { background: #fff !important; opacity: 0.5; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+
+        .p-main-info { padding: 16px; background: var(--card); border-bottom: 1px solid var(--border); }
+        .p-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .p-price-now { font-size: 24px; font-weight: 800; color: #fff; }
+        .p-price-was { font-size: 14px; color: var(--text-muted); text-decoration: line-through; }
+        .p-discount-tag { background: #FE2C55; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 2px; }
+        .p-title { font-size: 16px; font-weight: 600; line-height: 1.4; color: #fff; margin-bottom: 12px; }
+        .p-stats-row { display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--text-muted); }
+        .shipping-badge { color: #00f2ea; display: flex; align-items: center; gap: 4px; font-weight: 600; }
+
+        .t-section { padding: 16px; background: var(--card); border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+        .t-section-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .t-section-title { font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; }
+        
+        /* Opsi Pemilihan Bar */
+        .option-preview-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: var(--card); border-bottom: 1px solid var(--border); cursor: pointer; margin-bottom: 8px; }
+        .v-preview-chips { display: flex; gap: 6px; margin-top: 8px; }
+        .v-chip { font-size: 10px; background: #222; padding: 3px 8px; border-radius: 4px; color: #bbb; border: 1px solid #333; }
+
+        .rating-summary-box { display: flex; gap: 20px; padding: 16px 0; align-items: center; border-bottom: 1px solid #1f1f1f; margin-bottom: 16px; }
+        .rating-score-large { flex: 0 0 100px; text-align: center; }
+        .score-num { font-size: 28px; font-weight: 800; color: #fff; }
+        .score-subtext { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+        .rating-bars { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .rating-bar-row { display: flex; align-items: center; gap: 8px; font-size: 10px; color: #999; }
+        .bar-bg { flex: 1; height: 4px; background: #1f1f1f; border-radius: 2px; overflow: hidden; }
+        .bar-fill { height: 100%; background: #fff; }
+        .bar-pct { width: 30px; text-align: right; }
+
+        .review-media-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 5px 0 20px; scrollbar-width: none; }
+        .review-media-scroll img { width: 85px; height: 85px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+
+        .tt-header { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .tt-avatar { width: 30px; height: 30px; border-radius: 50%; }
+        .tt-name { font-size: 12px; font-weight: 700; color: #fff; }
+        .tt-stars { color: #fec400; font-size: 8px; margin-top: 2px; }
+        .tt-content { font-size: 13px; color: #eee; line-height: 1.5; margin-bottom: 8px; }
+        .tt-variant, .tt-date { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        .btn-more-reviews { width: 100%; padding: 10px; background: #1f1f1f; border: 1px solid #333; border-radius: 4px; color: #fff; font-size: 12px; font-weight: 600; margin-top: 15px; cursor: pointer; }
+
+        .shop-info-section { display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--card); border-bottom: 1px solid var(--border); }
+        .shop-logo { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #333; }
+        .shop-name { font-size: 14px; font-weight: 700; flex: 1; }
+        .btn-visit-shop { padding: 6px 12px; border: 1px solid #333; border-radius: 4px; font-size: 12px; font-weight: 600; }
+
+        .desc-box { padding: 16px; line-height: 1.8; color: #eee; font-size: 14px; background: var(--card); }
+        .desc-box img { width: 100%; border-radius: 8px; margin: 15px 0; }
+
+        /* FIXED BOTTOM ACTION BAR - HIDDEN WHEN SCROLLING TO BOTTOM */
+        .bottom-action-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #1a1a1a; border-top: 1px solid #222; padding: 12px 16px; z-index: 1000; transition: transform 0.3s ease; }
+        .bottom-action-bar.hidden { transform: translate(-50%, 100%); }
+        .btn-buy-full { width: 100%; background: var(--primary); color: #fff; border: none; height: 48px; border-radius: 25px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.2; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .btn-subtext { font-size: 10px; font-weight: 400; opacity: 0.9; }
+
+        /* VARIANT POPUP (BOTTOM SHEET) */
+        .v-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: none; opacity: 0; transition: 0.3s; }
+        .v-popup { position: fixed; bottom: -100%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: #fff; border-radius: 15px 15px 0 0; z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding-bottom: 85px; max-height: 85vh; overflow-y: auto; color: #333; }
+        .v-popup.active { bottom: 0; }
+        .v-overlay.active { display: block; opacity: 1; }
+        
+        /* HEADER POPUP - FIX IMAGE NOT CUT OFF */
+        .v-popup-header { display: flex; gap: 15px; padding: 15px 20px; position: sticky; top: 0; background: #fff; z-index: 5; border-bottom: 1px solid #f2f2f2; }
+        .v-header-img-container { width: 100px; height: 100px; border-radius: 10px; border: 1px solid #eee; margin-top: -35px; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        .v-header-img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+        .v-header-info { flex: 1; padding-top: 4px; }
+        .v-close { position: absolute; top: 12px; right: 15px; font-size: 20px; color: #bbb; cursor: pointer; }
+        .v-price-row { color: var(--primary); font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 8px; line-height: 1; }
+        .v-price-orig { font-size: 13px; color: #999; text-decoration: line-through; font-weight: 400; margin-top: 5px; }
+        .v-discount-badge { background: var(--primary); color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 3px; height: fit-content; font-weight: 700; }
+        .v-selected-text { font-size: 13px; color: #777; margin-top: 8px; font-weight: 500; }
+
+        .v-flash-bar { background: linear-gradient(90deg, #FE2C55, #FF5C8A); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; font-size: 12px; font-weight: 700; }
+        
+        .v-body { padding: 20px; }
+        .v-section-title { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: #333; }
+        
+        /* UPDATED GRID DESIGN (HORIZONTAL SCROLL - 3 ITEMS VISIBLE) */
+        .v-grid { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none; }
+        .v-grid::-webkit-scrollbar { display: none; }
+        .v-item { flex: 0 0 calc((100% - 20px) / 3); border: 1.5px solid #f0f0f0; border-radius: 10px; overflow: hidden; background: #fff; cursor: pointer; transition: 0.2s; position: relative; }
+        .v-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+        .v-item-name { font-size: 11px; text-align: center; padding: 8px 4px; font-weight: 600; color: #555; background: #fff; border-top: 1px solid #f8f8f8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .v-item.active { border-color: var(--primary); border-width: 2px; }
+        .v-item.active .v-item-name { color: var(--primary); background: #fffcfc; font-weight: 700; }
+
+        /* STICKY FOOTER IN POPUP */
+        .v-footer { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; padding: 15px 20px; background: #fff; border-top: 1px solid #eee; z-index: 10; }
+        .v-btn-submit { width: 100%; background: var(--primary); color: #fff; border: none; height: 52px; border-radius: 26px; font-weight: 800; font-size: 16px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+
+        .summary-card { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #f2f2f2; border-radius: 12px; margin-bottom: 20px; background: #fafafa; }
+        .summary-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 1px solid #eee; flex-shrink: 0; }
+        .summary-info { flex: 1; min-width: 0; }
+        .summary-title { font-size: 13px; font-weight: 800; color: #1a1a1a; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .summary-variant-name { font-size: 11px; font-weight: 700; color: var(--primary); background: #fff5f5; padding: 2px 12px; border-radius: 6px; display: inline-block; }
+        .summary-check { margin-left: 8px; color: var(--primary); font-size: 22px; }
+
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 3000; display: none; justify-content: center; align-items: center; }
+        .lightbox img { max-width: 90%; max-height: 80%; border-radius: 12px; }
+
+        .order-section { padding: 35px 16px; background: #fff; color: #333; border-top: 10px solid #f8f8f8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="swiper product-swiper" id="main-slider"><div class="swiper-wrapper"><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171554_51c1933de307d71628094233cf21045d_f2b6bc06-45ce-49e1-b78a-83749c645474.jpg?v=1770860901&width=600" id="main-product-img" style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171555_01184dc8f361de70e30119f3cdef1096_24bbb8f3-2979-480b-871c-3a04ddca420e.jpg?v=1770860901&width=713"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171555_444d2c124e4be17943ed9c32594a59a9_6a3afba8-0182-43f6-9aab-585a1987fe80.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171556_04aeae6434d2bf11f15c8decafcecad1_2b780d16-d3f5-4660-b688-cbd7426d1e07.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171556_04aeae6434d2bf11f15c8decafcecad1_2b780d16-d3f5-4660-b688-cbd7426d1e07.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171556_8287e0c8d2eb317f43d122927709fea5_b7e46a41-aa82-4cad-acbf-117a54006fbd.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171556_1aaa28956e1e2404d3ab79bf4708b3f5_aa3fea34-d1a1-42a6-8809-caae560588f9.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div><div class="swiper-slide"><img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171557_2541f0914671c413d2e060959e322af9_b005abcf-c9ed-4ffb-82d5-5a94c1d9324c.jpg?v=1770860901&width=600"  style="width:100%; height:100%; object-fit:cover;"></div></div><div class="swiper-pagination"></div></div>
+        
+        <div class="p-main-info">
+            <div class="p-price-row">
+                <span class="p-price-now">Rp 185.000</span>
+                <span class="p-price-was">Rp 376.999</span>
+                <span class="p-discount-tag">-51%</span>
+            </div>
+            <h1 class="p-title">Seamless Body Shaping Bra</h1>
+            <div class="p-stats-row">
+                <span>⭐ 4.9 (1.2RB)</span>
+                <span>2.5RB+ terjual</span>
+                <span class="shipping-badge"><i class="fas fa-truck-fast"></i> Estimasi tiba 2-5 hari</span>
+            </div>
+        </div>
+
+        
+        <div class="shop-info-section">
+            <img src="https://scontent.fsub32-1.fna.fbcdn.net/v/t39.30808-1/544855391_122226980642134194_6398547332533926441_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=eTWI74Ih7hgQ7kNvwFCZFg9&_nc_oc=Adl6HYGPsK5StahE7zUfGqrhoJmaqNd0Z4lNh7D7AcaRufWxJW4upRTcGyG03Yp24Rs&_nc_zt=24&_nc_ht=scontent.fsub32-1.fna&_nc_gid=fHa6m-xQnq3iBRKFxfwK7A&oh=00_Afte1s0J3GtESJvi99v3u1JJ11IbJ__vW_iW3hWFIxGTdQ&oe=699D5507" class="shop-logo">
+            <div class="shop-name">KynoraQuantix</div>
+            <button class="btn-visit-shop">Kunjungi</button>
+        </div>
+
+        <div class="option-preview-bar" onclick="openPopup()">
+            <div>
+                <div class="t-section-title" style="font-size:13px; color:#fff;">Pilih opsi</div>
+                <div class="v-preview-chips">
+                    <span class="v-chip">Black</span><span class="v-chip">Skin</span>
+                    
+                </div>
+            </div>
+            <i class="fas fa-chevron-right" style="color:#666; font-size:12px;"></i>
+        </div>
+
+        
+        <div class="t-section">
+            <div class="t-section-title" style="margin-bottom: 20px;">FITUR UNGGULAN</div>
+            <div class="t-features-list">
+                
+                    <div class="t-feature-item" style="margin-bottom: 25px;">
+                        <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171556_8287e0c8d2eb317f43d122927709fea5_b7e46a41-aa82-4cad-acbf-117a54006fbd.jpg?v=1770860901&width=600" style="width:100%; border-radius:12px; margin-bottom:12px; border: 1px solid #333;">
+                        <div style="font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 6px;">Siluet Mulus Tanpa Cela</div>
+                        <div style="font-size: 13px; color: #999; line-height: 1.6;">Teknologi tanpa jahitan yang menyatu dengan kulit, menjamin penampilan rapi tanpa garis bra yang mengganggu estetika busana.</div>
+                    </div>
+                
+                    <div class="t-feature-item" style="margin-bottom: 25px;">
+                        <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171555_444d2c124e4be17943ed9c32594a59a9_6a3afba8-0182-43f6-9aab-585a1987fe80.jpg?v=1770860901&width=600" style="width:100%; border-radius:12px; margin-bottom:12px; border: 1px solid #333;">
+                        <div style="font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 6px;">Lekuk Tubuh Indah Sempurna</div>
+                        <div style="font-size: 13px; color: #999; line-height: 1.6;">Menyamarkan lemak punggung secara instan, menciptakan siluet tubuh yang lebih ramping, proporsional, dan penuh percaya diri.</div>
+                    </div>
+                
+                    <div class="t-feature-item" style="margin-bottom: 25px;">
+                        <img src="https://cdn.shopify.com/s/files/1/0837/0919/8637/files/spp_shopify20260119171540_d0c8ae984e4610fbfb75991781b0b58e.jpg?v=1768814143" style="width:100%; border-radius:12px; margin-bottom:12px; border: 1px solid #333;">
+                        <div style="font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 6px;">Dukungan Alami Bebas Sesak</div>
+                        <div style="font-size: 13px; color: #999; line-height: 1.6;">Mengangkat payudara dengan lembut tanpa kawat, memberikan struktur indah sekaligus kenyamanan maksimal untuk pemakaian sepanjang hari.</div>
+                    </div>
+                
+                    <div class="t-feature-item" style="margin-bottom: 25px;">
+                        <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171557_2541f0914671c413d2e060959e322af9_b005abcf-c9ed-4ffb-82d5-5a94c1d9324c.jpg?v=1770860901&width=600" style="width:100%; border-radius:12px; margin-bottom:12px; border: 1px solid #333;">
+                        <div style="font-weight: 800; font-size: 15px; color: #fff; margin-bottom: 6px;">Bahan Sejuk Bernapas Bebas</div>
+                        <div style="font-size: 13px; color: #999; line-height: 1.6;">Material premium yang lembut, elastis, dan bersirkulasi udara baik, menjaga kulit tetap segar dan bebas gerah.</div>
+                    </div>
+                
+            </div>
+        </div>
+        
+        <div class="t-section">
+            <div class="t-section-header" style="margin-bottom:12px;">
+                <div class="t-section-title">Ulasan Pelanggan</div>
+                <div style="font-size:12px; color:#999;">Lihat semua <i class="fas fa-chevron-right" style="font-size:10px; margin-left:4px;"></i></div>
+            </div>
+            
+            <div class="rating-summary-box">
+                <div class="rating-score-large">
+                    <div class="score-num">4.9 <span style="font-size:12px; color:#999; font-weight:400;">/ 5</span></div>
+                    <div class="score-subtext">⭐ Berdasarkan ulasan pembeli</div>
+                </div>
+                <div class="rating-bars">
+                    
+                        <div class="rating-bar-row">
+                            <span>5 <i class="fas fa-star" style="font-size:8px;"></i></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+                            <span class="bar-pct">100%</span>
+                        </div>
+                    
+                        <div class="rating-bar-row">
+                            <span>4 <i class="fas fa-star" style="font-size:8px;"></i></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div>
+                            <span class="bar-pct">20%</span>
+                        </div>
+                    
+                        <div class="rating-bar-row">
+                            <span>3 <i class="fas fa-star" style="font-size:8px;"></i></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width:5%"></div></div>
+                            <span class="bar-pct">5%</span>
+                        </div>
+                    
+                        <div class="rating-bar-row">
+                            <span>2 <i class="fas fa-star" style="font-size:8px;"></i></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width:2%"></div></div>
+                            <span class="bar-pct">2%</span>
+                        </div>
+                    
+                        <div class="rating-bar-row">
+                            <span>1 <i class="fas fa-star" style="font-size:8px;"></i></span>
+                            <div class="bar-bg"><div class="bar-fill" style="width:1%"></div></div>
+                            <span class="bar-pct">1%</span>
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="review-media-scroll">
+                
+            </div>
+
+            <div class="t-testi-list">
+                
+                    <div class="t-testi-item">
+                        <div class="tt-header">
+                            <img src="https://ui-avatars.com/api/?name=Jessica" class="tt-avatar">
+                            <div class="tt-info">
+                                <div class="tt-name">Jessica • <span style="font-weight:400; color:#999;">Pembelian terverifikasi</span></div>
+                                <div class="tt-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="tt-content">Bahannya lembut banget dan beneran seamless, gak nyeplak pas pake kaos ketat. Pengiriman juga super cepet, packing aman pake bubble wrap.</div>
+                        <div class="tt-variant">Produk: Pilihan Default</div>
+                        <div class="tt-date">Baru saja</div>
+                    </div>
+                
+                    <div class="t-testi-item">
+                        <div class="tt-header">
+                            <img src="https://ui-avatars.com/api/?name=Kevin" class="tt-avatar">
+                            <div class="tt-info">
+                                <div class="tt-name">Kevin • <span style="font-weight:400; color:#999;">Pembelian terverifikasi</span></div>
+                                <div class="tt-stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <div class="tt-content">Belikan buat kado istri, katanya nyaman banget dipake seharian. Bahannya adem dan elastis. Seller fast response, packingnya rapi banget.</div>
+                        <div class="tt-variant">Produk: Pilihan Default</div>
+                        <div class="tt-date">Baru saja</div>
+                    </div>
+                
+                    <div class="t-testi-item">
+                        <div class="tt-header">
+                            <img src="https://ui-avatars.com/api/?name=Syifa" class="tt-avatar">
+                            <div class="tt-info">
+                                <div class="tt-name">Syifa • <span style="font-weight:400; color:#999;">Pembelian terverifikasi</span></div>
+                                <div class="tt-stars">★★★★☆</div>
+                            </div>
+                        </div>
+                        <div class="tt-content">Warnanya cantik-cantik, ukurannya pas sesuai deskripsi. Efek shapingnya berasa tapi gak bikin sesek. Recommended banget buat yang cari bra tanpa kawat.</div>
+                        <div class="tt-variant">Produk: Pilihan Default</div>
+                        <div class="tt-date">Baru saja</div>
+                    </div>
+                
+            </div>
+            <button class="btn-more-reviews" onclick="scrollToOrder()">Tampilkan ulasan lainnya</button>
+        </div>
+
+        <div class="desc-box">
+            <div class="t-section-title" style="margin-bottom:15px; color:#fff;">Deskripsi produk</div>
+            • Angkat dan kencangkan bentuk payudara secara alami tanpa kawat yang menyiksa.
+• Desain mulus tanpa jahitan, tidak tampak meski memakai pakaian sangat ketat.
+• Samarkan lipatan lemak di punggung dan ketiak untuk siluet lebih ramping.
+• Material ultra-lembut dan sejuk yang menjamin kenyamanan maksimal selama 24 jam.
+            <div style="margin-top:20px; border-top:1px solid #222; padding-top:20px;">Bahan: Premium Quality
+Stok: Tersedia
+Garansi: 100% Original</div>
+        </div>
+
+        <div id="order-section" class="order-section">
+            <div id="variant-summary"></div>
+            <div style="text-align:center; margin-bottom:25px; font-weight:800; font-size:16px; color:#1a1a1a; text-transform:uppercase; letter-spacing:1px;">Formulir Pemesanan</div>
+            <div id="order-online-container" style="border-radius:12px; overflow:hidden;"><!-- OrderOnline Embed Code - v8.0.2 --> <div class="ooef"> <form class="orderonline-embed-form" data-username="vita" data-product-slug="seamless-body-shaping-bra" data-product-id="69977b021ad46782ec0efc21" id="oo-embed-form-seamless-body-shaping-bra-9213" data-origin="orderonline"> <div class="ooef-loader"><style>.ooef-loader{visibility: hidden;opacity: 0;position: absolute;left: 0;right: 0;top: 0;bottom: 0;display: flex;justify-content: center;align-items: center;flex-direction: column;animation: ooLoadingIn 10s ease;-webkit-animation: ooLoadingIn 10s ease;animation-fill-mode: forwards;overflow: hidden}@keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}@-webkit-keyframes ooLoadingIn{0%{visibility: hidden;opacity: 0}20%{visibility: visible;opacity: 0}100%{visibility: visible;opacity: 1}}.ooef-loader>div,.ooef-loader>div:after{border-radius: 50%;width: 2.5rem;height: 2.5rem}.ooef-loader>div{font-size: 10px;position: relative;text-indent: -9999em;border: .25rem solid #f5f5f5;border-left: .25rem solid #55c4cf;-webkit-transform: translateZ(0);-ms-transform: translateZ(0);transform: translateZ(0);-webkit-animation: ooLoading 1.1s infinite linear;animation: ooLoading 1.1s infinite linear}.ooef-loader.error>div{border-left: .25rem solid #ff4500;animation-duration: 5s}@-webkit-keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}@keyframes ooLoading{0%{-webkit-transform: rotate(0);transform: rotate(0)}100%{-webkit-transform: rotate(360deg);transform: rotate(360deg)}}</style><div aria-live="polite" role="status"><div>Loading...</div></div></div> </form> </div> <script> if (typeof xLogError != 'function') { var xLogError = function (error) { var req = new XMLHttpRequest(); var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack }); var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error'; req.open('POST', 'https://api.orderonline.id/log', true); req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded'); req.send(params); }; } try { if (typeof xEmbedScript != 'function') { var xEmbedScript = function () { !function(w, d, e, v, id, t, s) { if (d.getElementById(id)) return; t = d.createElement(e);t.async = !0;t.src = v;t.id = id; s = d.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.2', 'oo-embed-js'); }; } if (typeof xEmbedInit != 'function') { var xEmbedInit = function (w, n) { if (w.ooe) return; n = w.ooe = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!w._ooe) w._ooe = n; n.push = n;n.loaded = !0;n.version = '8.0.2';n.queue = []; }; } xEmbedInit(window); ooe('setup', 'redirect', 'https://vita.orderonline.id'); ooe('init', '5f1a8627a9bf8058b0424f32', '69977b021ad46782ec0efc21', '69977b021ad46782ec0efc22', 'oo-embed-form-seamless-body-shaping-bra-9213', {"mode":"page","action":"Klik untuk pemesanan","title":"Form Pemesanan","triggerPixel":false,"triggerGtm":false}); if (!window.jQuery) { !function(w, d, e, v, id, t, s) { if (d.getElementById(id)) return; t = d.createElement(e);t.async = !0;t.src = v;t.id = id; t.addEventListener('load', xEmbedScript); s = d.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery'); } else { xEmbedScript(); } } catch (e) { xLogError(e); throw e; } </script> <!-- End OrderOnline Embed Code --></div>
+        </div>
+    </div>
+
+    <!-- STICKY FOOTER -->
+    <div id="sticky-action-bar" class="bottom-action-bar">
+        <button class="btn-buy-full" onclick="openPopup()">
+            <span>Beli sekarang</span>
+            <span class="btn-subtext">Flash Sale Rp 185.000</span>
+        </button>
+    </div>
+
+    <!-- VARIANT POPUP -->
+    <div id="v-overlay" class="v-overlay" onclick="closePopup()"></div>
+    <div id="v-popup" class="v-popup custom-scrollbar">
+        <div class="v-popup-header">
+            <div class="v-header-img-container">
+                <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171554_51c1933de307d71628094233cf21045d_f2b6bc06-45ce-49e1-b78a-83749c645474.jpg?v=1770860901&width=600" id="v-img" class="v-header-img">
+            </div>
+            <div class="v-header-info">
+                <div class="v-price-row">
+                    <span id="v-price-now">Rp 185.000</span>
+                    <span class="v-discount-badge">-51%</span>
+                </div>
+                <div class="v-price-orig">Rp 376.999</div>
+                <div class="v-selected-text" id="v-selected-name">Pilih varian</div>
+            </div>
+            <div class="v-close" onclick="closePopup()">&times;</div>
+        </div>
+
+        <div class="v-flash-bar">
+            <span><i class="fas fa-bolt"></i> Flash Sale</span>
+            <span>Berakhir dalam <span id="v-timer">00:00:00</span></span>
+        </div>
+
+        <div class="v-body">
+            <div class="v-section-title">Warna (2)</div>
+            <div class="v-grid">
+                
+                    <div class="v-item active" onclick="selectVariant(this, '185000', 'Black', 'https://movenicry.com/cdn/shop/files/spp_shopify20260119171558_5e19f60abde92bf8a6e1655927841fe2_525e7a6d-fe36-47d8-9aa3-dfa6fc3407ca.jpg?v=1770860901&width=713')">
+                        <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171558_5e19f60abde92bf8a6e1655927841fe2_525e7a6d-fe36-47d8-9aa3-dfa6fc3407ca.jpg?v=1770860901&width=713">
+                        <div class="v-item-name">Black</div>
+                    </div>
+                
+                    <div class="v-item " onclick="selectVariant(this, '185000', 'Skin', 'https://movenicry.com/cdn/shop/files/spp_shopify20260119171558_5e6729ab9584c692a7353d9cede45ea0_e71039e1-94d5-4104-a3ac-cc11cd8bc903.jpg?v=1770860901&width=713')">
+                        <img src="https://movenicry.com/cdn/shop/files/spp_shopify20260119171558_5e6729ab9584c692a7353d9cede45ea0_e71039e1-94d5-4104-a3ac-cc11cd8bc903.jpg?v=1770860901&width=713">
+                        <div class="v-item-name">Skin</div>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="v-footer">
+            <button class="v-btn-submit" onclick="scrollToOrderAndClose()">Beli sekarang</button>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'"><img id="lightbox-img"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('#main-slider', { pagination: { el: '.swiper-pagination' }, autoplay: { delay: 5000 } });
+
+        const actionBar = document.getElementById('sticky-action-bar');
+        const orderSection = document.getElementById('order-section');
+
+        // Logic to hide sticky action bar when at the bottom (order form)
+        window.addEventListener('scroll', () => {
+          if (!orderSection || !actionBar) return;
+          const rect = orderSection.getBoundingClientRect();
+          if (rect.top <= window.innerHeight - 100) {
+            actionBar.classList.add('hidden');
+          } else {
+            actionBar.classList.remove('hidden');
+          }
+        });
+
+        function openPopup() {
+            document.getElementById('v-overlay').classList.add('active');
+            document.getElementById('v-popup').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePopup() {
+            document.getElementById('v-overlay').classList.remove('active');
+            document.getElementById('v-popup').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function selectVariant(el, price, name, image) {
+            document.querySelectorAll('.v-item').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            
+            document.getElementById('v-price-now').innerText = 'Rp ' + Number(price).toLocaleString('id-ID');
+            document.getElementById('v-selected-name').innerText = name;
+            
+            if (image) {
+                document.getElementById('v-img').src = image;
+                const mainImg = document.getElementById('main-product-img');
+                if (mainImg) mainImg.src = image;
+            }
+
+            // Update main order summary
+            const summary = document.getElementById('variant-summary');
+            if (summary) {
+              summary.innerHTML = `
+                <div class="summary-card">
+                    <img src="${image}" class="summary-img">
+                    <div class="summary-info">
+                        <div class="summary-title">Seamless Body Shaping Bra</div>
+                        <div class="summary-variant-name">${name}</div>
+                    </div>
+                    <i class="fas fa-check-circle summary-check"></i>
+                </div>`;
+            }
+        }
+
+        function scrollToOrderAndClose() {
+            closePopup();
+            setTimeout(() => {
+                const target = document.getElementById('order-section');
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth' });
+                  // Force hide bar just in case scroll listener is slow
+                  if(actionBar) actionBar.classList.add('hidden');
+                }
+            }, 350);
+        }
+
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.style.display = 'flex';
+        }
+
+        function startTimer(duration, display) {
+            let timer = duration;
+            setInterval(() => {
+                let h = Math.floor(timer / 3600);
+                let m = Math.floor((timer % 3600) / 60);
+                let s = Math.floor(timer % 60);
+                display.textContent = (h<10?'0':'')+h+":"+(m<10?'0':'')+m+":"+(s<10?'0':'')+s;
+                if (--timer < 0) timer = duration;
+            }, 1000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const timerEl = document.getElementById('v-timer');
+            const durationSeconds = 1 * 3600;
+            if(timerEl) startTimer(durationSeconds, timerEl);
+            
+            const first = document.querySelector('.v-item');
+            if(first) first.click();
+        });
+    </script>
+</body>
+</html>
